@@ -1,5 +1,7 @@
 %
 % South University of Science and Technology of China Thesis Template
+% or Southern University of Science and Technology(SUSTech) Thesis Template
+%
 % For Bachelor Master and Doctor
 %
 %   Version
@@ -7,8 +9,8 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.08.24 by whzecomjm@USTC
-%
+%       2014.08.24 by whzecomjm@SUSTC
+%       2019.03.10 by Spacebody@SUSTech
 
 \RequirePackage{times}
 \RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
@@ -31,26 +33,26 @@
 \RequirePackage{array}
 \RequirePackage{fancyvrb}
 \RequirePackage{xcolor}
-\ifustc@euler
+\ifsustc@euler
 	\usepackage[OT1,euler-digits]{eulervm}
 \fi
 \RequirePackage{url}	\def\UrlBreaks{\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\[\do\\\do\]\do\^\do\_\do\`\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\,\do\?\do\'\do+\do\=\do\#}
 
 
 
-\ustc@define@term{ustcloaname}
-\ifustc@notchinese
-	\ustcloaname{List of Algorithm}
+\sustc@define@term{sustcloaname}
+\ifsustc@english
+	\sustcloaname{List of Algorithm}
 	\renewcommand{\algorithmcfname}{Algorithm}
 \else
-	\ustcloaname{算法索引}
+	\sustcloaname{算法索引}
 	\renewcommand{\algorithmcfname}{算法}
 \fi
-\renewcommand{\listalgorithmcfname}{\ustc@ustcloaname}
-\newcommand\ustcloa{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustcloaname}\listofalgorithms}
+\renewcommand{\listalgorithmcfname}{\sustc@sustcloaname}
+\newcommand\sustcloa{\cleardoublepage\addcontentsline{toc}{chapter}{\sustc@sustcloaname}\listofalgorithms}
 
-\ifustc@oldfontcfg
-	\ifustc@adobefont
+\ifsustc@oldfontcfg
+	\ifsustc@adobefont
 		\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
 		\setCJKsansfont{Adobe Heiti Std}
 		\setCJKmonofont{Adobe Fangsong Std}
@@ -98,7 +100,7 @@
 \newcommand{\scite}[1]{\textsuperscript{\cite{#1}}}
 
 \newenvironment{denotation}[1][2.5cm]{
-  \ifustc@notchinese
+  \ifsustc@english
   		\chapter{Notations}
   \else
   		\chapter{主要符号对照表} % no tocline

@@ -1,5 +1,7 @@
 %
-% South University of Science and Technology of China Thesis Template
+% South University of Science and Technology of China 
+% or Southern University of Science and Technology(SUSTech) Thesis Template
+%
 % For Bachelor, Master and Doctor
 %
 % Modified from the ustcthesis.
@@ -10,43 +12,43 @@
 %       2014.03.26 by ywg@USTC
 %   Last Modified
 %       2014.08.29 by whzecomjm@SUSTC
-%
+%       2019.03.10 by Spacebody@SUSTech
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{sustcthesis}[2014/08/26 SUSTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.08.29 by whzecomjm@SUSTC]
+\ProvidesClass{sustcthesis}[2014/08/26 SUSTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.08.29 by whzecomjm@SUSTC, 2019.03.10 by Spacebody@SUSTech]
 
 %Dew class options
-\newif\ifustc@basic\ustc@basicfalse
-\newif\ifustc@oldfontcfg\ustc@oldfontcfgfalse
-\newif\ifustc@master\ustc@masterfalse
-\newif\ifustc@doctor\ustc@doctorfalse
-\newif\ifustc@bachelor\ustc@bachelorfalse
-\newif\ifustc@adobefont\ustc@adobefontfalse
-\newif\ifustc@euler\ustc@eulerfalse
-\newif\ifustc@notchinese\ustc@notchinesefalse
+\newif\ifsustc@basic\sustc@basicfalse
+\newif\ifsustc@oldfontcfg\sustc@oldfontcfgfalse
+\newif\ifsustc@master\sustc@masterfalse
+\newif\ifsustc@doctor\sustc@doctorfalse
+\newif\ifsustc@bachelor\sustc@bachelorfalse
+\newif\ifsustc@adobefont\sustc@adobefontfalse
+\newif\ifsustc@euler\sustc@eulerfalse
+\newif\ifsustc@english\sustc@englishfalse
 
 %Define new commands
-\def\ustc@define@term#1{
+\def\sustc@define@term#1{
   \expandafter\gdef\csname #1\endcsname##1{%
-    \expandafter\gdef\csname ustc@#1\endcsname{##1}}
+    \expandafter\gdef\csname sustc@#1\endcsname{##1}}
   \csname #1\endcsname{}}
 
-\DeclareOption{basic}{\ustc@basictrue}
+\DeclareOption{basic}{\sustc@basictrue}
 
-\DeclareOption{oldfontcfg}{\ustc@oldfontcfgtrue}
+\DeclareOption{oldfontcfg}{\sustc@oldfontcfgtrue}
 %Dissertation categories - use only one option at a time, never try to use more than one options.
-\DeclareOption{master}{\ustc@mastertrue}
-\DeclareOption{doctor}{\ustc@doctortrue}
-\DeclareOption{bachelor}{\ustc@bachelortrue}
+\DeclareOption{master}{\sustc@mastertrue}
+\DeclareOption{doctor}{\sustc@doctortrue}
+\DeclareOption{bachelor}{\sustc@bachelortrue}
 %For English and/or other language users
-\DeclareOption{notchinese}{\ustc@notchinesetrue}
+\DeclareOption{english}{\sustc@englishtrue}
 %Use Euler math font
-\DeclareOption{euler}{\ustc@eulertrue}
+\DeclareOption{euler}{\sustc@eulertrue}
 
 
 %Enhance compatibility
-\DeclareOption{adobefonts}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
-\DeclareOption{adobefont}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
+\DeclareOption{adobefonts}{\sustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
+\DeclareOption{adobefont}{\sustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
 
 %Pass all unprocessed/unknown options to ctexbook. If a wrong option is specified, perhaps ctexbook will throw an error.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -60,7 +62,7 @@
 \LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
       
 %Check if extra pack should be used.
-\ifustc@basic\relax\else\input{sustcxtra.cls}\relax\fi
+\ifsustc@basic\relax\else\input{sustcxtra.cls}\relax\fi
 
 % Alter some LaTeX defaults for better treatment of figures:
 % See p.105 of "TeX Unbound" for suggested values.
@@ -82,28 +84,28 @@
 %remember to use [htp] or [htpb] for placement
 
 %Check if user has specified one dissertation option.
-\ifustc@master\relax\else
-	\ifustc@doctor\relax\else
-		\ifustc@bachelor\relax\else
-			\ClassError{USTCthesis}{You have to specify one of thesis options: bachelor, master or doctor.}{}
+\ifsustc@master\relax\else
+	\ifsustc@doctor\relax\else
+		\ifsustc@bachelor\relax\else
+			\ClassError{sustcthesis}{You have to specify one of thesis options: bachelor, master or doctor.}{}
 		\fi
 	\fi
 \fi
 
 %Ensure only one dissertation option is specified.
-\newcommand\ustc@error{\ClassError{USTCthesis}{You can ONLY specify ONE KEY option: bachelor, master or doctor!}{}}
-\ifustc@doctor
-	\ifustc@master
-		\ustc@error
+\newcommand\sustc@error{\ClassError{sustcthesis}{You can ONLY specify ONE KEY option: bachelor, master or doctor!}{}}
+\ifsustc@doctor
+	\ifsustc@master
+		\sustc@error
 	\else
-		\ifustc@bachelor
-			\ustc@error
+		\ifsustc@bachelor
+			\sustc@error
 		\fi
 	\fi
 \else
-	\ifustc@master
-		\ifustc@bachelor
-			\ustc@error
+	\ifsustc@master
+		\ifsustc@bachelor
+			\sustc@error
 		\fi
 	\fi
 \fi
@@ -137,8 +139,8 @@
 	plainpages=false,%
 	pdfstartview=FitH,}
 \AtBeginDocument{\hypersetup{%
-	pdftitle={\ustc@entitle},%
-	pdfauthor={\ustc@author,\ustc@enauthor},%
+	pdftitle={\sustc@entitle},%
+	pdfauthor={\sustc@enauthor},%
 	pdfkeywords={},%Either put keywords here or not, as you wish.
 	pdfcreator={LaTeX using SUSTC LaTeX Thesis Template for Bachelor, created by whzecomjm}}}
 \RequirePackage[numbers,sort&compress,square]{natbib}
@@ -172,12 +174,12 @@
 \newcommand{\qihao}     {\fontsize{5.25pt} {\baselineskip}\selectfont}
 
 %Define font for vertical typesetting.
-\ifustc@adobefont
+\ifsustc@adobefont
 	\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}\relax
 \else%
 	\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}\relax
 \fi
-\newcommand{\ustc@verthei}{\CJKfamily{verthei}}
+\newcommand{\sustc@verthei}{\CJKfamily{verthei}}
 
 %Set section numbering to subsubsection
 \setcounter{secnumdepth}{3}
@@ -195,7 +197,7 @@
 \CTEXsetup[format={\flushleft\bfseries\sihao}]{section}%规定14pt，即四号
 \CTEXsetup[format={\flushleft\bfseries\fontsize{13pt}\baselineskip}]{subsection}%规定13pt
 \CTEXsetup[format={\flushleft\bfseries\xiaosihao}]{subsubsection}%规定12pt，即小四号
-\ifustc@notchinese
+\ifsustc@english
 	\CTEXsetup[name={Part\space,}]{part}
 	\CTEXsetup[name={Chapter\space,}]{chapter}
 	\CTEXsetup[number={\Roman{part}}]{part}
@@ -213,22 +215,22 @@
 \fi
 
 %Define new commands for List of Figures/Tables
-\ustc@define@term{ustclofname}
-\ustc@define@term{ustclotname}
-\ifustc@notchinese
-	\ustclofname{List of Figures}
-	\ustclotname{List of Tables}
+\sustc@define@term{sustclofname}
+\sustc@define@term{sustclotname}
+\ifsustc@english
+	\sustclofname{List of Figures}
+	\sustclotname{List of Tables}
 \else
-	\ustclofname{插图索引}
-	\ustclotname{表格索引}
+	\sustclofname{插图索引}
+	\sustclotname{表格索引}
 \fi
-\CTEXoptions[listfigurename={\ustc@ustclofname}]
-\CTEXoptions[listtablename={\ustc@ustclotname}]
-\newcommand\ustclot{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustclotname}\listoftables}
-\newcommand\ustclof{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustclofname}\listoffigures}
+\CTEXoptions[listfigurename={\sustc@sustclofname}]
+\CTEXoptions[listtablename={\sustc@sustclotname}]
+\newcommand\sustclot{\cleardoublepage\addcontentsline{toc}{chapter}{\sustc@sustclotname}\listoftables}
+\newcommand\sustclof{\cleardoublepage\addcontentsline{toc}{chapter}{\sustc@sustclofname}\listoffigures}
 
 %New mathematical environments
-\ifustc@notchinese
+\ifsustc@english
 	\newtheorem{theorem}{\textbf{Theorem}}[section]
 	\newtheorem{lemma}{\textbf{Lemma}}[section]
 	\newtheorem{example}{\textbf{Example}}[section]
@@ -295,7 +297,7 @@
 %Line and par setup
 %It seems unnecessary since CTeX has already set the \baselinestretch etc.
 %\renewcommand\baselinestretch{1.4}
-\newcommand\ustc@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\sustc@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \setlength{\parskip}{0pt plus3pt minus0pt}%{1ex plus1.5ex minus0.5ex}%{0.5\baselineskip}%{1.5pt plus1pt minus1pt}
 \setlength{\parindent}{2\ccwd}
 %\setlength{\parskip}{3pt plus1pt minus2pt}
@@ -306,11 +308,11 @@
 %\setlength{\belowcaptionskip}{5pt}
 
 %Title page setup
-\newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}%中文扉页第二行
-\newcommand\USTCHuge{\fontsize{30}{40}\selectfont}%中文扉页第二行
-\newcommand\USTCLARGE{\fontsize{26}{30}\selectfont}%英文扉页第二行
-\newcommand\USTCLarge{\fontsize{20}{30}\selectfont}%英文扉页第一行
-\newcommand\USTCTspace{\protect\CTEX@spaceChar}
+\newcommand\SUSTCHUGE{\fontsize{56}{67.2}\selectfont}%中文扉页第二行
+\newcommand\SUSTCHuge{\fontsize{30}{40}\selectfont}%中文扉页第二行
+\newcommand\SUSTCLARGE{\fontsize{26}{30}\selectfont}%英文扉页第二行
+\newcommand\SUSTCLarge{\fontsize{20}{30}\selectfont}%英文扉页第一行
+\newcommand\SUSTCTspace{\protect\CTEX@spaceChar}
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
   \thispagestyle{empty}%
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
@@ -320,44 +322,44 @@
 %\renewcommand{\floatpagefraction}{0.80}
 
 %Information used for title page and book spine
-\renewcommand\title[1]{\def\ustc@title{#1}}
-\renewcommand\author[1]{\def\ustc@author{#1}}
-\ustc@define@term{advisor}
-\ustc@define@term{coadvisor}
-\ustc@define@term{major}%硕士博士论文适用专业全称，不可用缩写。本科论文不需要此项 Not used in bachelor thesis. For master and doctor thesis, use full name -- NEVER use abbr. 
-\ustc@define@term{submitdate}
-\ustc@define@term{depart}%硕士博士论文用院系代号，仅用于书脊。本科论文用院系全称，仅用于扉页 For bachelor use full name(only used in title page). Currently unused for master and doctor
+\renewcommand\title[1]{\def\sustc@title{#1}}
+\renewcommand\author[1]{\def\sustc@author{#1}}
+\sustc@define@term{advisor}
+\sustc@define@term{coadvisor}
+\sustc@define@term{major}%硕士博士论文适用专业全称，不可用缩写。本科论文不需要此项 Not used in bachelor thesis. For master and doctor thesis, use full name -- NEVER use abbr. 
+\sustc@define@term{submitdate}
+\sustc@define@term{depart}%硕士博士论文用院系代号，仅用于书脊。本科论文用院系全称，仅用于扉页 For bachelor use full name(only used in title page). Currently unused for master and doctor
 
 %English
-\ustc@define@term{entitle}
-\ustc@define@term{enauthor}
-\ustc@define@term{enadvisor}
-\ustc@define@term{encoadvisor}
-\ustc@define@term{encoadvisorsec}
-\ustc@define@term{ensubmitdate}
-\ustc@define@term{enmajor}
-\ustc@define@term{endepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用 For bachelor use full name(only used in title page). Currently unused for master and doctor
+\sustc@define@term{entitle}
+\sustc@define@term{enauthor}
+\sustc@define@term{enadvisor}
+\sustc@define@term{encoadvisor}
+\sustc@define@term{encoadvisorsec}
+\sustc@define@term{ensubmitdate}
+\sustc@define@term{enmajor}
+\sustc@define@term{endepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用 For bachelor use full name(only used in title page). Currently unused for master and doctor
 
 %Other language strings
-\ustc@define@term{otherustcstr}%A translation of `University of Science and Technology of China' in your language
-\ustc@define@term{otherthesisstr}%A translation of `A dissertation for doctor's degree' in your language
-\ustc@define@term{otherauthorstr}%A translation of `Author' in your language
-\ustc@define@term{otherdepartmentstr}%A translation of `Department' in your language
-\ustc@define@term{otherstudentidstr}%A translation of `Student ID' in your language
-\ustc@define@term{othersupervisorstr}%A translation of `Supervisor' in your language
-\ustc@define@term{otherfinishedtimestr}%A translation of `Finished Time' in your language
-\ustc@define@term{otherspecialitystr}%A translation of `Speciality' in your language
-\ustc@define@term{othertitle}
-\ustc@define@term{otherauthor}
-\ustc@define@term{otheradvisor}
-\ustc@define@term{othercoadvisor}
-\ustc@define@term{othersubmitdate}
-\ustc@define@term{othermajor}
-\ustc@define@term{otherdepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用 For bachelor use full name(only used in title page). Currently unused for master and doctor
-\ustc@define@term{studentid}%学号，仅本科论文 Student ID, only for bachelor
-\ustc@define@term{spinetitle}%书脊使用的标题，当title里含有控制字符时使用此命令输入文本标题 Use this command to generate spine when there are some control commands in \title{}
-\ustc@define@term{covertitle}%封皮使用的标题，当title里存在强制换行导致标题超过了三行时，或者存在其他特殊情况时，请使用此命令输入封皮的标题。根据制本厂的规定，封皮标题最多两行。
-\ustc@define@term{encovertitle}%本科专用。封皮使用的英文标题，当entitle里存在强制换行导致标题超过了四行时，或者存在其他特殊情况时，请使用此命令输入封皮的英文标题。根据制本厂的规定，封皮英文标题最多三行。
+\sustc@define@term{othersustcstr}%A translation of `University of Science and Technology of China' in your language
+\sustc@define@term{otherthesisstr}%A translation of `A dissertation for doctor's degree' in your language
+\sustc@define@term{otherauthorstr}%A translation of `Author' in your language
+\sustc@define@term{otherdepartmentstr}%A translation of `Department' in your language
+\sustc@define@term{otherstudentidstr}%A translation of `Student ID' in your language
+\sustc@define@term{othersupervisorstr}%A translation of `Supervisor' in your language
+\sustc@define@term{otherfinishedtimestr}%A translation of `Finished Time' in your language
+\sustc@define@term{otherspecialitystr}%A translation of `Speciality' in your language
+\sustc@define@term{othertitle}
+\sustc@define@term{otherauthor}
+\sustc@define@term{otheradvisor}
+\sustc@define@term{othercoadvisor}
+\sustc@define@term{othersubmitdate}
+\sustc@define@term{othermajor}
+\sustc@define@term{otherdepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用 For bachelor use full name(only used in title page). Currently unused for master and doctor
+\sustc@define@term{studentid}%学号，仅本科论文 Student ID, only for bachelor
+\sustc@define@term{spinetitle}%书脊使用的标题，当title里含有控制字符时使用此命令输入文本标题 Use this command to generate spine when there are some control commands in \title{}
+\sustc@define@term{covertitle}%封皮使用的标题，当title里存在强制换行导致标题超过了三行时，或者存在其他特殊情况时，请使用此命令输入封皮的标题。根据制本厂的规定，封皮标题最多两行。
+\sustc@define@term{encovertitle}%本科专用。封皮使用的英文标题，当entitle里存在强制换行导致标题超过了四行时，或者存在其他特殊情况时，请使用此命令输入封皮的英文标题。根据制本厂的规定，封皮英文标题最多三行。
 
 
 
@@ -369,14 +371,14 @@
 %	\make@cntitle
 %   If you need a chinese title, please remove this "%" sign!
 	\make@entitle
-	\ifustc@notchinese
-		\ifx\ustc@othertitle\@empty
+	\ifsustc@english
+		\ifx\sustc@othertitle\@empty
 			\relax
 		\else
 			\make@othertitle
 		\fi
 	\fi
-	\ifustc@bachelor
+	\ifsustc@bachelor
 		\relax
 	\else
 		\make@authorization
@@ -390,47 +392,47 @@
   left=3.2cm,
   right=3.2cm
   }
-  \pdfbookmark[-1]{\ustc@title}{title}
+  \pdfbookmark[-1]{\sustc@title}{title}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
   	\vspace*{0.5cm plus 0.5cm minus 1cm}
-      \includegraphics[width=10cm]{ustc_logo_text.png}
+      \includegraphics[width=10cm]{sustc_logo_text.png}
     \vskip -0.5cm
-    \bfseries\USTCHUGE\ifustc@doctor
+    \bfseries\SUSTCHUGE\ifsustc@doctor
       {博士学位论文}
-    \else\ifustc@master
+    \else\ifsustc@master
       {硕士学位论文}  
     \else
       {学士学位论文}
     \fi\fi
     
-    \ifustc@bachelor\vskip 1cm\relax\else\vskip 1.5cm\fi
-      \includegraphics[width=4.5cm]{ustc_logo_fig.png}
-    \ifustc@bachelor\relax\else\vskip 0.5cm\fi %0.75cm
+    \ifsustc@bachelor\vskip 1cm\relax\else\vskip 1.5cm\fi
+      \includegraphics[width=4.5cm]{sustc_logo_fig.png}
+    \ifsustc@bachelor\relax\else\vskip 0.5cm\fi %0.75cm
       \renewcommand{\baselinestretch}{0.5}%Leading
         \parbox[c]{11cm}%\begin{minipage}
-        {\center\bfseries\yihao\ustc@title}
+        {\center\bfseries\yihao\sustc@title}
       %\end{minipage}
   \end{center}
   \vskip 1.0cm %0.6cm 0.7cm 2.3cm
   \begin{center}
   {\sanhao
-  \ifustc@bachelor\begin{tabular}{lc}%
-	  \bfseries{姓\hspace{2\ccwd}名：} & \ustc@underline[6cm]{\ustc@author}\\
-	  \bfseries{院\hspace{2\ccwd}系：} & \ustc@underline[6cm]{\ustc@depart}\\
-	  \bfseries{学\hspace{2\ccwd}号：} & \ustc@underline[6cm]{\ustc@studentid}\\
-	  \bfseries{导\hspace{2\ccwd}师：} & \ustc@underline[6cm]{\ustc@advisor}\\
-	  \ifx\ustc@coadvisor\@empty\else & \ustc@underline[6cm]{\ustc@coadvisor}\\\fi
-	  \bfseries{完成时间：} & \ustc@underline[6cm]{\ustc@submitdate}
+  \ifsustc@bachelor\begin{tabular}{lc}%
+	  \bfseries{姓\hspace{2\ccwd}名：} & \sustc@underline[6cm]{\sustc@author}\\
+	  \bfseries{院\hspace{2\ccwd}系：} & \sustc@underline[6cm]{\sustc@depart}\\
+	  \bfseries{学\hspace{2\ccwd}号：} & \sustc@underline[6cm]{\sustc@studentid}\\
+	  \bfseries{导\hspace{2\ccwd}师：} & \sustc@underline[6cm]{\sustc@advisor}\\
+	  \ifx\sustc@coadvisor\@empty\else & \sustc@underline[6cm]{\sustc@coadvisor}\\\fi
+	  \bfseries{完成时间：} & \sustc@underline[6cm]{\sustc@submitdate}
 	\end{tabular}
   \else	\begin{tabular}{lc}%
-	  \bfseries{作者姓名：} & \ustc@underline[6cm]{\ustc@author}\\
-	  \bfseries{学科专业：} & \ustc@underline[6cm]{\ustc@major}\\
-	  \bfseries{导师姓名：} & \ustc@underline[6cm]{\ustc@advisor}\\
-	  \ifx\ustc@coadvisor\@empty\else
-	                        & \ustc@underline[6cm]{\ustc@coadvisor}\\\fi
-	  \bfseries{完成时间：} & \ustc@underline[6cm]{\ustc@submitdate}
+	  \bfseries{作者姓名：} & \sustc@underline[6cm]{\sustc@author}\\
+	  \bfseries{学科专业：} & \sustc@underline[6cm]{\sustc@major}\\
+	  \bfseries{导师姓名：} & \sustc@underline[6cm]{\sustc@advisor}\\
+	  \ifx\sustc@coadvisor\@empty\else
+	                        & \sustc@underline[6cm]{\sustc@coadvisor}\\\fi
+	  \bfseries{完成时间：} & \sustc@underline[6cm]{\sustc@submitdate}
 	\end{tabular}
   \fi}
   \end{center}
@@ -445,60 +447,60 @@
 %English title page
 \newcommand\make@entitle{%
   \newgeometry{%
-  top=1.5cm,
-  bottom=3.0cm,
-  left=3.0cm,
-  right=3.0cm
+  top=2.7cm,
+  bottom=2.7cm,
+  left=2.4cm,
+  right=2.4cm
   }
   \pdfbookmark{Cover Page}{etitle}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  \begin{tabular}{lr}CLC\underline{\hspace{2cm}}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad &Number\underline{\hspace{2cm}}\\ UDC\underline{\hspace{2cm}}&Classification Level\underline{\hspace{2cm}}\end{tabular}\vspace*{1.5cm}
-    \vskip 0cm
-      \USTCLarge{\ttfamily{SOUTH UNIVERSITY OF SCIENCE AND TECHNOLOGY OF CHINA}}
-    \vskip 0.0cm
-    \USTCHuge{\ttfamily\ifustc@doctor
+
+  \begin{tabular}{lr}CLC\underline{\hspace{2cm}}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad &Number\underline{\hspace{2cm}}\\ 
+  UDC\underline{\hspace{2cm}}&Available for reference\quad$\Box$ Yes\quad$\Box$ No
+  \end{tabular}\vspace*{0.8cm}
+
+    \vskip 1.0cm %1.25cm
+      \includegraphics[scale=0.7]{SUSTech_Logo_en.pdf}
+    \vskip 1.0cm %2.4cm
+    \SUSTCHuge{\ttfamily\ifsustc@doctor
       {A Dissertation for Doctor's Degree}
-    \else\ifustc@master
+    \else\ifsustc@master
       {A Dissertation for Master's Degree}
     \else
-      {Undergraduate Thesis}
-    \fi\fi}
-    \vskip 1.0cm %1.25cm
-      \includegraphics[width=4.7cm]{ustc_logo_fig.png}
-    \vskip 1.0cm %2.4cm
-      \renewcommand{\baselinestretch}{1}
-      \bfseries\yihao\ustc@entitle
+      {A Dissertation for Bachelor's Degree}
+    \fi\fi}\\
+    \renewcommand{\baselinestretch}{1}
+     \bfseries\erhao\textbf{Thesis Title}:\sustc@entitle
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
   {\sanhao
-  \ifustc@bachelor
-	  \begin{tabular}{lc}
-	  	Author :& \ustc@underline[7cm]{\ustc@enauthor}\\
-	  	Student ID :& \ustc@underline[7cm]{\ustc@studentid}\\	 
-	  	Department :& \ustc@underline[7cm]{\ustc@endepart}\\
-	  	Major :& \ustc@underline[7cm]{\ustc@enmajor}\\
-		Supervisor :& \ustc@underline[7cm]{\ustc@enadvisor}\\
-		\ifx\ustc@encoadvisor\@empty\else
-	    Acad. Supervisors:& \ustc@underline[7cm]{\ustc@encoadvisor}\\
-	    \fi
-	    \ifx\ustc@encoadvisorsec\@empty\else
-	                   & \ustc@underline[7cm]{\ustc@encoadvisorsec}\\	
-	    \fi
-	  	Finished Time :& \ustc@underline[6cm]{\ustc@ensubmitdate}
+  \ifsustc@bachelor
+	  \begin{tabular}{rc}
+    \specialrule{0em}{0pt}{0pt}
+	  	\textbf{Student Name}:& \sustc@underline[7cm]{\sustc@enauthor}\\
+      \\[-1em]
+	  	\textbf{Student ID}:& \sustc@underline[7cm]{\sustc@studentid}\\
+      \\[-1em]	 
+	  	\textbf{Department}:& \sustc@underline[7cm]{\sustc@endepart}\\
+      \\[-1em]
+	  	\textbf{Program}:& \sustc@underline[7cm]{\sustc@enmajor}\\
+      \\[-1em]
+		  \textbf{Theis Advisor}:& \sustc@underline[7cm]{\sustc@enadvisor}
 	  \end{tabular}
-	  
+    \vskip 2.8cm
+      Date: \sustc@ensubmitdate
   \else
 	  \begin{tabular}{lc}
-	  	Author :& \ustc@underline[6cm]{\ustc@enauthor}\\
-	  	Speciality :& \ustc@underline[6cm]{\ustc@enmajor}\\
-	  	Supervisor :& \ustc@underline[6cm]{\ustc@enadvisor}\\
-		\ifx\ustc@encoadvisor\@empty\else
-	                     & \ustc@underline[6cm]{\ustc@encoadvisor}\\
+	  	Author :& \sustc@underline[6cm]{\sustc@enauthor}\\
+	  	Speciality :& \sustc@underline[6cm]{\sustc@enmajor}\\
+	  	Supervisor :& \sustc@underline[6cm]{\sustc@enadvisor}\\
+		\ifx\sustc@encoadvisor\@empty\else
+	                     & \sustc@underline[6cm]{\sustc@encoadvisor}\\
 	    \fi
-	  	Finished Time :& \ustc@underline[6cm]{\ustc@ensubmitdate}
+	  	Finished Time :& \sustc@underline[6cm]{\sustc@ensubmitdate}
 	  \end{tabular}
   \fi}
   \end{center}
@@ -523,38 +525,38 @@
   \thispagestyle{empty}
   \begin{center}
     \vspace*{0cm}
-      \USTCLarge{\ttfamily{\ustc@otherustcstr}}
+      \SUSTCLarge{\ttfamily{\sustc@othersustcstr}}
     \vskip -0.2cm %-0.6cm
-    \USTCLARGE{\ttfamily\ustc@otherthesisstr}
+    \SUSTCLARGE{\ttfamily\sustc@otherthesisstr}
     \vskip 1.5cm %1.25cm
-      \includegraphics[width=4.7cm]{ustc_logo_fig.png}
+      \includegraphics[width=4.7cm]{sustc_logo_fig.png}
     \vskip 1.5cm %2.4cm
       \renewcommand{\baselinestretch}{1}
-      \bfseries\yihao\ustc@othertitle
+      \bfseries\yihao\sustc@othertitle
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
   {\sanhao
-  \ifustc@bachelor
+  \ifsustc@bachelor
 	  \begin{tabular}{lc}
-	  	\ustc@otherauthorstr :& \ustc@underline[6cm]{\ustc@otherauthor}\\
-	  	\ustc@otherdepartmentstr :& \ustc@underline[6cm]{\ustc@otherdepart}\\
-	  	\ustc@otherstudentidstr :& \ustc@underline[6cm]{\ustc@studentid}\\
-		\ustc@othersupervisorstr :& \ustc@underline[6cm]{\ustc@otheradvisor}\\
-		\ifx\ustc@encoadvisor\@empty\else
-	                     & \ustc@underline[6cm]{\ustc@othercoadvisor}\\
+	  	\sustc@otherauthorstr :& \sustc@underline[6cm]{\sustc@otherauthor}\\
+	  	\sustc@otherdepartmentstr :& \sustc@underline[6cm]{\sustc@otherdepart}\\
+	  	\sustc@otherstudentidstr :& \sustc@underline[6cm]{\sustc@studentid}\\
+		\sustc@othersupervisorstr :& \sustc@underline[6cm]{\sustc@otheradvisor}\\
+		\ifx\sustc@encoadvisor\@empty\else
+	                     & \sustc@underline[6cm]{\sustc@othercoadvisor}\\
 	    \fi
-	  	\ustc@otherfinishedtimestr :& \ustc@underline[6cm]{\ustc@othersubmitdate}
+	  	\sustc@otherfinishedtimestr :& \sustc@underline[6cm]{\sustc@othersubmitdate}
 	  \end{tabular}
   \else
 	  \begin{tabular}{lc}
-	  	\ustc@otherauthorstr :& \ustc@underline[6cm]{\ustc@otherauthor}\\
-	  	\ustc@otherspecialitystr :& \ustc@underline[6cm]{\ustc@othermajor}\\
-	  	\ustc@othersupervisorstr :& \ustc@underline[6cm]{\ustc@otheradvisor}\\
-		\ifx\ustc@othercoadvisor\@empty\else
-	                     & \ustc@underline[6cm]{\ustc@othercoadvisor}\\
+	  	\sustc@otherauthorstr :& \sustc@underline[6cm]{\sustc@otherauthor}\\
+	  	\sustc@otherspecialitystr :& \sustc@underline[6cm]{\sustc@othermajor}\\
+	  	\sustc@othersupervisorstr :& \sustc@underline[6cm]{\sustc@otheradvisor}\\
+		\ifx\sustc@othercoadvisor\@empty\else
+	                     & \sustc@underline[6cm]{\sustc@othercoadvisor}\\
 	    \fi
-	  	\ustc@otherfinishedtimestr :& \ustc@underline[6cm]{\ustc@othersubmitdate}
+	  	\sustc@otherfinishedtimestr :& \sustc@underline[6cm]{\sustc@othersubmitdate}
 	  \end{tabular}
   \fi}
   \end{center}
@@ -601,7 +603,7 @@
   \def\cover@wu{5}
   \def\cover@swu{-5}
 
-  \ifustc@bachelor%cover page for bachelor
+  \ifsustc@bachelor%cover page for bachelor
     \ifx\cover@varcn\cover@san\c@scn{#1}{0mm}{-8.5mm}{1.6cm}\else
       \ifx\cover@varcn\cover@ssan\c@scn{#1}{0.5mm}{-8.5mm}{1.55cm}\else
         \ifx\cover@varcn\cover@si\c@scn{#1}{1mm}{-8.5mm}{1.5cm}\else
@@ -635,23 +637,23 @@
     \begin{minipage}[c]{9.7cm}
       \begin{minipage}[c][\cover@cntitleh][s]{9.5cm}
 	    \centering\bfseries\cover@cnfontsize\baselineskip=1\baselineskip plus 1fill\lineskip=0pt plus 1fill
-        \ifx\ustc@covertitle\@empty\ustc@title\else\ustc@covertitle\fi
+        \ifx\sustc@covertitle\@empty\sustc@title\else\sustc@covertitle\fi
       \end{minipage}\vskip\cover@envoffset\hskip\cover@enhoffset
       \begin{minipage}[c][\cover@entitleh][s]{9.5cm}
 	    \centering\bfseries\cover@enfontsize\baselineskip=1\baselineskip plus 1fill\lineskip=0pt plus 1fill
-        \ifx\ustc@encovertitle\@empty\ustc@entitle\else\ustc@encovertitle\fi
+        \ifx\sustc@encovertitle\@empty\sustc@entitle\else\sustc@encovertitle\fi
       \end{minipage}\vskip 0.5cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{9.5cm}
-	    \centering\bfseries\cover@defaultfontsize\ustc@depart
+	    \centering\bfseries\cover@defaultfontsize\sustc@depart
       \end{minipage}\vskip -0.5cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{9.5cm}
-        \centering\bfseries\cover@defaultfontsize\ustc@author\hfil\ustc@studentid
+        \centering\bfseries\cover@defaultfontsize\sustc@author\hfil\sustc@studentid
       \end{minipage}\vskip -0.5cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{9.5cm}
-        \centering\bfseries\cover@defaultfontsize\ustc@advisor\ifx\ustc@coadvisor\@empty\else\quad\ustc@coadvisor\fi
+        \centering\bfseries\cover@defaultfontsize\sustc@advisor\ifx\sustc@coadvisor\@empty\else\quad\sustc@coadvisor\fi
       \end{minipage}\vskip -0.5cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{9.5cm}
-        \centering\bfseries\cover@defaultfontsize\ustc@submitdate
+        \centering\bfseries\cover@defaultfontsize\sustc@submitdate
       \end{minipage}
     \end{minipage}
   \else
@@ -673,25 +675,25 @@
     \clearpage
     \thispagestyle{empty}
     \begin{flushleft}
-      \rotatebox{-90}{\makebox[23.7cm][c]{\ziju{0.17}\ustc@verthei\zihao{-4}{\ifx\ustc@spinetitle\@empty\ustc@title\else\ustc@spinetitle\fi\hfil\hfil\ustc@depart\hfil\hfil\ustc@author\hfil\hfil{}南方科技大学}}}
+      \rotatebox{-90}{\makebox[23.7cm][c]{\ziju{0.17}\sustc@verthei\zihao{-4}{\ifx\sustc@spinetitle\@empty\sustc@title\else\sustc@spinetitle\fi\hfil\hfil\sustc@depart\hfil\hfil\sustc@author\hfil\hfil{}南方科技大学}}}
     \end{flushleft}
     \vspace{\cover@cnvoffset}\hspace{\cover@cnhoffset}
     \begin{minipage}[c]{12.2cm}
       \begin{minipage}[c][\cover@cntitleh][s]{12cm}
 	    \centering\bfseries\cover@cnfontsize\baselineskip=1\baselineskip plus 1fill\lineskip=0pt plus 1fill
-        \ifx\ustc@covertitle\@empty\ustc@title\else\ustc@covertitle\fi
+        \ifx\sustc@covertitle\@empty\sustc@title\else\sustc@covertitle\fi
       \end{minipage}\vskip 0.6cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{12cm}
-	    \centering\bfseries\cover@defaultfontsize\ustc@author
+	    \centering\bfseries\cover@defaultfontsize\sustc@author
       \end{minipage}\vskip -0.6cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{12cm}
-        \centering\bfseries\cover@defaultfontsize\ustc@major
+        \centering\bfseries\cover@defaultfontsize\sustc@major
       \end{minipage}\vskip -0.6cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{12cm}
-        \centering\bfseries\cover@defaultfontsize\ustc@advisor\ifx\ustc@coadvisor\@empty\else\quad\ustc@coadvisor\fi
+        \centering\bfseries\cover@defaultfontsize\sustc@advisor\ifx\sustc@coadvisor\@empty\else\quad\sustc@coadvisor\fi
       \end{minipage}\vskip -0.6cm\hskip 0cm
       \begin{minipage}[c][1.5cm][s]{12cm}
-        \centering\bfseries\cover@defaultfontsize\ustc@submitdate
+        \centering\bfseries\cover@defaultfontsize\sustc@submitdate
       \end{minipage}
     \end{minipage}
   \fi
@@ -718,7 +720,7 @@
 \fancypagestyle{plain}{}
 \pagestyle{fancy}
   \fancyhf{}
-  \ifustc@bachelor\fancyhead[C]{\xiaowuhao{SUSTC's Dissertation for Bachelor's Degree}}\relax\else\fancyhead[C]{\small \nouppercase\leftmark}\fi
+  \ifsustc@bachelor\fancyhead[C]{\xiaowuhao{SUSTC's Dissertation for Bachelor's Degree}}\relax\else\fancyhead[C]{\small \nouppercase\leftmark}\fi
   \renewcommand{\headrulewidth}{0.7pt}
 
 \renewcommand\frontmatter{%
@@ -737,14 +739,14 @@
 
 
 %Abstracts and thanks
-\newcommand{\ustc@enabstractname}{ABSTRACT}
-\newcommand{\ustc@cnabstractname}{摘\rule{\ccwd}{0pt}要}
+\newcommand{\sustc@enabstractname}{ABSTRACT}
+\newcommand{\sustc@cnabstractname}{摘\rule{\ccwd}{0pt}要}
 
 
-\ifustc@notchinese
-	\newcommand{\ustc@thanksname}{Acknowledgements}
+\ifsustc@english
+	\newcommand{\sustc@thanksname}{Acknowledgements}
 \else
-	\newcommand{\ustc@thanksname}{致\rule{\ccwd}{0pt}谢}
+	\newcommand{\sustc@thanksname}{致\rule{\ccwd}{0pt}谢}
 \fi
 
 \newcommand\keywords[1]{%
@@ -752,19 +754,19 @@
 \newcommand\enkeywords[1]{%
   \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
 \newenvironment{cnabstract}
-  {\ifustc@bachelor\chapter{\texorpdfstring{\ustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\ustc@cnabstractname}{摘要}]{\protect\vskip-10pt\ustc@cnabstractname}\fi}
+  {\ifsustc@bachelor\chapter{\texorpdfstring{\sustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\sustc@cnabstractname}{摘要}]{\protect\vskip-10pt\sustc@cnabstractname}\fi}
   {}
 \newenvironment{enabstract}
-  {\ifustc@bachelor\chapter{ABSTRACT}\else\chapter[ABSTRACT]{\protect\vskip-10pt{}ABSTRACT}\fi}
+  {\ifsustc@bachelor\chapter{ABSTRACT}\else\chapter[ABSTRACT]{\protect\vskip-10pt{}ABSTRACT}\fi}
   {}
 \renewenvironment{thanks}
-  {\ifustc@bachelor\chapter[\texorpdfstring{\ustc@thanksname}{\ifustc@notchinese{}Acknowledgements\else{}致谢\fi}]{\protect\vskip-10pt\ustc@thanksname}\else\chapter{\texorpdfstring{\ustc@thanksname}{\ifustc@notchinese{}Acknowledgements\else{}致谢\fi}}\fi}
+  {\ifsustc@bachelor\chapter[\texorpdfstring{\sustc@thanksname}{\ifsustc@english{}Acknowledgements\else{}致谢\fi}]{\protect\vskip-10pt\sustc@thanksname}\else\chapter{\texorpdfstring{\sustc@thanksname}{\ifsustc@english{}Acknowledgements\else{}致谢\fi}}\fi}
   {}
 
 
 
 %tableofcontents
-\ifustc@notchinese
+\ifsustc@english
 	\renewcommand{\contentsname}{Contents}
 \else
 	\renewcommand{\contentsname}{\texorpdfstring{目\rule{\ccwd}{0pt}录}{目录}}
