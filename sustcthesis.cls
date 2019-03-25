@@ -488,7 +488,7 @@
       \\[-1em]
 	  	\textbf{Program}:& \sustc@underline[7cm]{\sustc@enmajor}\\
       \\[-1em]
-		  \textbf{Theis Advisor}:& \sustc@underline[7cm]{\sustc@enadvisor}
+		  \textbf{Thesis Advisor}:& \sustc@underline[7cm]{\sustc@enadvisor}
 	  \end{tabular}
     \vskip 2.8cm
       Date: \sustc@ensubmitdate
