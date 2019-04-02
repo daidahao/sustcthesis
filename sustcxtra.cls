@@ -11,6 +11,7 @@
 %   Last Modified
 %       2014.08.24 by whzecomjm@SUSTC
 %       2019.03.10 by Spacebody@SUSTech
+%       2019.04.02 by liziwl@SUSTech
 
 \RequirePackage{times}
 \RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
@@ -81,8 +82,9 @@
 
 \setmainfont{Times New Roman}
 \setsansfont[BoldFont={Courier New Bold}]{Courier New}
-\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
-
+% 设置等宽字体，代码字体用 Courier 较为合适
+% \setmonofont[BoldFont={Arial:style=Bold}]{Arial}
+\setmonofont[BoldFont={Courier New}]{Courier New}
 
 
 %在正文中无论是否在图形环境中，用 \figcaption 均可得到图形标题
