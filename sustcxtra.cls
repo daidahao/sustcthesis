@@ -81,8 +81,9 @@
 
 \setmainfont{Times New Roman}
 \setsansfont[BoldFont={Courier New Bold}]{Courier New}
-\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
-
+% 设置等宽字体，代码字体用 Courier 较为合适
+% \setmonofont[BoldFont={Arial:style=Bold}]{Arial}
+\setmonofont[BoldFont={Courier New}]{Courier New}
 
 
 %在正文中无论是否在图形环境中，用 \figcaption 均可得到图形标题
