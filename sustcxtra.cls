@@ -11,6 +11,7 @@
 %   Last Modified
 %       2014.08.24 by whzecomjm@SUSTC
 %       2019.03.10 by Spacebody@SUSTech
+%       2019.04.02 by liziwl@SUSTech
 
 \RequirePackage{times}
 \RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
