@@ -13,6 +13,7 @@
 %   Last Modified
 %       2014.08.29 by whzecomjm@SUSTC
 %       2019.03.10 by Spacebody@SUSTech
+%       2019.04.02 by liziwl@SUSTech
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{sustcthesis}[2014/08/26 SUSTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.08.29 by whzecomjm@SUSTC, 2019.03.10 by Spacebody@SUSTech]
