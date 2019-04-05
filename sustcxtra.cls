@@ -82,9 +82,15 @@
 
 \setmainfont{Times New Roman}
 \setsansfont[BoldFont={Courier New Bold}]{Courier New}
-% 设置等宽字体，代码字体用 Courier 较为合适
-% \setmonofont[BoldFont={Arial:style=Bold}]{Arial}
-\setmonofont[BoldFont={Courier New}]{Courier New}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置等宽字体，这里关联封面标题字体无法修改。
+\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
+% 如想使用\texttt{}使用courier标记变量符号，请用以下命令代替
+% {\mono foo_bar}
+% 使用时大括号必须保留，否则影响后面字体
+\RequirePackage{courier}
+\newfontfamily\mono{Courier New}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %在正文中无论是否在图形环境中，用 \figcaption 均可得到图形标题
