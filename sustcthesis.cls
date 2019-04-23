@@ -473,7 +473,7 @@
       {A Dissertation for Bachelor's Degree}
     \fi\fi}\\
     \renewcommand{\baselinestretch}{1}
-     \bfseries\erhao\textbf{Thesis Title}:\sustc@entitle
+     \bfseries\erhao\textbf{Thesis Title}: \sustc@entitle
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
@@ -481,15 +481,15 @@
   \ifsustc@bachelor
 	  \begin{tabular}{rc}
     \specialrule{0em}{0pt}{0pt}
-	  	\textbf{Student Name}:& \sustc@underline[7cm]{\sustc@enauthor}\\
+	  	\textbf{Student Name}:& \sustc@underline[8cm]{\sustc@enauthor}\\
       \\[-1em]
-	  	\textbf{Student ID}:& \sustc@underline[7cm]{\sustc@studentid}\\
+	  	\textbf{Student ID}:& \sustc@underline[8cm]{\sustc@studentid}\\
       \\[-1em]	 
-	  	\textbf{Department}:& \sustc@underline[7cm]{\sustc@endepart}\\
+	  	\textbf{Department}:& \sustc@underline[8cm]{\sustc@endepart}\\
       \\[-1em]
-	  	\textbf{Program}:& \sustc@underline[7cm]{\sustc@enmajor}\\
+	  	\textbf{Program}:& \sustc@underline[8cm]{\sustc@enmajor}\\
       \\[-1em]
-		  \textbf{Thesis Advisor}:& \sustc@underline[7cm]{\sustc@enadvisor}
+		  \textbf{Thesis Advisor}:& \sustc@underline[8cm]{\sustc@enadvisor}
 	  \end{tabular}
     \vskip 2.8cm
       Date: \sustc@ensubmitdate

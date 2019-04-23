@@ -14,7 +14,7 @@
 %       2019.04.02 by liziwl@SUSTech
 
 \RequirePackage{times}
-%\RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
+\RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
 \RequirePackage{graphicx,psfrag}
 \RequirePackage{enumerate}
 \RequirePackage{subfig,epsfig}
