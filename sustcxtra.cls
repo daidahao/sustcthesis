@@ -14,7 +14,9 @@
 %       2019.04.02 by liziwl@SUSTech
 
 \RequirePackage{times}
-\RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
+% \RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
 \RequirePackage{graphicx,psfrag}
 \RequirePackage{enumerate}
 \RequirePackage{subfig,epsfig}
@@ -44,12 +46,14 @@
 \sustc@define@term{sustcloaname}
 \ifsustc@english
 	\sustcloaname{List of Algorithm}
-	\renewcommand{\algorithmcfname}{Algorithm}
+	% \renewcommand{\algorithmcfname}{Algorithm}
+  \renewcommand{\ALG@name}{Algorithme}
 \else
 	\sustcloaname{算法索引}
-	\renewcommand{\algorithmcfname}{算法}
+	% \renewcommand{\algorithmcfname}{算法}
+  \renewcommand{\ALG@name}{算法}
 \fi
-\renewcommand{\listalgorithmcfname}{\sustc@sustcloaname}
+% \renewcommand{\listalgorithmcfname}{\sustc@sustcloaname}  % TODO: replace for algorithmic
 \newcommand\sustcloa{\cleardoublepage\addcontentsline{toc}{chapter}{\sustc@sustcloaname}\listofalgorithms}
 
 \ifsustc@oldfontcfg
