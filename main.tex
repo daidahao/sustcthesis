@@ -7,7 +7,10 @@
 
 % 设置图形文件的搜索路径
 \graphicspath{{figures/}}
-
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage{gbt7714}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 封面部分
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,7 +122,7 @@
   % 参考文献
   % 使用 BibTeX
   % 选择参考文献的排版格式。注意ustcbib这个格式不保证完全符合要求，请自行决定是否使用
-  \bibliographystyle{sustcbib}%{GBT7714-2005NLang-UTF8}
+  %\bibliographystyle{sustcbib}%{GBT7714-2005NLang-UTF8}
   \bibliography{bib/tex}
   \nocite{*} % for every item
   % 不使用 BibTeX
