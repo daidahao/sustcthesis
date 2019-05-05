@@ -753,9 +753,9 @@
 \fi
 
 \newcommand\keywords[1]{%
-  \vspace{3.5ex}\noindent{\bfseries 关键词：~} #1}
+  \vspace{3.5ex}\noindent{\bfseries [关键词]：~} #1}
 \newcommand\enkeywords[1]{%
-  \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
+  \vspace{3.5ex}\noindent{\bf [Keywords]:~} #1}
 \newenvironment{cnabstract}
   {\ifsustc@bachelor\chapter{\texorpdfstring{\sustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\sustc@cnabstractname}{摘要}]{\protect\vskip-10pt\sustc@cnabstractname}\fi}
   {}
