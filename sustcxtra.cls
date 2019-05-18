@@ -11,9 +11,12 @@
 %   Last Modified
 %       2014.08.24 by whzecomjm@SUSTC
 %       2019.03.10 by Spacebody@SUSTech
+%       2019.04.02 by liziwl@SUSTech
 
 \RequirePackage{times}
-\RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
+% \RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
 \RequirePackage{graphicx,psfrag}
 \RequirePackage{enumerate}
 \RequirePackage{subfig,epsfig}
@@ -43,12 +46,14 @@
 \sustc@define@term{sustcloaname}
 \ifsustc@english
 	\sustcloaname{List of Algorithm}
-	\renewcommand{\algorithmcfname}{Algorithm}
+	% \renewcommand{\algorithmcfname}{Algorithm}
+  \renewcommand{\ALG@name}{Algorithme}
 \else
 	\sustcloaname{算法索引}
-	\renewcommand{\algorithmcfname}{算法}
+	% \renewcommand{\algorithmcfname}{算法}
+  \renewcommand{\ALG@name}{算法}
 \fi
-\renewcommand{\listalgorithmcfname}{\sustc@sustcloaname}
+% \renewcommand{\listalgorithmcfname}{\sustc@sustcloaname}  % TODO: replace for algorithmic
 \newcommand\sustcloa{\cleardoublepage\addcontentsline{toc}{chapter}{\sustc@sustcloaname}\listofalgorithms}
 
 \ifsustc@oldfontcfg
@@ -81,8 +86,15 @@
 
 \setmainfont{Times New Roman}
 \setsansfont[BoldFont={Courier New Bold}]{Courier New}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置等宽字体，这里关联封面标题字体无法修改。
 \setmonofont[BoldFont={Arial:style=Bold}]{Arial}
-
+% 如想使用\texttt{}使用courier标记变量符号，请用以下命令代替
+% {\mono foo_bar}
+% 使用时大括号必须保留，否则影响后面字体
+\RequirePackage{courier}
+\newfontfamily\mono{Courier New}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %在正文中无论是否在图形环境中，用 \figcaption 均可得到图形标题

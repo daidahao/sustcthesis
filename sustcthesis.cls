@@ -13,6 +13,7 @@
 %   Last Modified
 %       2014.08.29 by whzecomjm@SUSTC
 %       2019.03.10 by Spacebody@SUSTech
+%       2019.04.02 by liziwl@SUSTech
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{sustcthesis}[2014/08/26 SUSTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.08.29 by whzecomjm@SUSTC, 2019.03.10 by Spacebody@SUSTech]
@@ -115,10 +116,10 @@
 \RequirePackage{titletoc}
 \RequirePackage{titlesec}
 \RequirePackage[
-	left=3.17cm,
-	right=2.57cm,
+	left=3.0cm,
+	right=2.5cm,
 	top=2.50cm,
-	bottom=2.50cm,
+	bottom=2.00cm,
 	headsep=0.25cm,
 	headheight=1.5cm,
 	footskip=0.79cm,
@@ -387,10 +388,10 @@
 %Chinese title page
 \newcommand\make@cntitle{%
   \newgeometry{%
-  top=3.8cm,
-  bottom=3.8cm,
-  left=3.2cm,
-  right=3.2cm
+  top=2.5cm,
+  bottom=2.0cm,
+  left=3.0cm,
+  right=2.5cm
   }
   \pdfbookmark[-1]{\sustc@title}{title}
   \cleardoublepage
@@ -447,10 +448,10 @@
 %English title page
 \newcommand\make@entitle{%
   \newgeometry{%
-  top=2.7cm,
-  bottom=2.7cm,
-  left=2.4cm,
-  right=2.4cm
+  top=2.5cm,
+  bottom=2.0cm,
+  left=3.0cm,
+  right=2.5cm
   }
   \pdfbookmark{Cover Page}{etitle}
   \cleardoublepage
@@ -472,7 +473,7 @@
       {A Dissertation for Bachelor's Degree}
     \fi\fi}\\
     \renewcommand{\baselinestretch}{1}
-     \bfseries\erhao\textbf{Thesis Title}:\sustc@entitle
+     \bfseries\erhao\textbf{Thesis Title}: \sustc@entitle
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
@@ -480,15 +481,15 @@
   \ifsustc@bachelor
 	  \begin{tabular}{rc}
     \specialrule{0em}{0pt}{0pt}
-	  	\textbf{Student Name}:& \sustc@underline[7cm]{\sustc@enauthor}\\
+	  	\textbf{Student Name}:& \sustc@underline[8cm]{\sustc@enauthor}\\
       \\[-1em]
-	  	\textbf{Student ID}:& \sustc@underline[7cm]{\sustc@studentid}\\
+	  	\textbf{Student ID}:& \sustc@underline[8cm]{\sustc@studentid}\\
       \\[-1em]	 
-	  	\textbf{Department}:& \sustc@underline[7cm]{\sustc@endepart}\\
+	  	\textbf{Department}:& \sustc@underline[8cm]{\sustc@endepart}\\
       \\[-1em]
-	  	\textbf{Program}:& \sustc@underline[7cm]{\sustc@enmajor}\\
+	  	\textbf{Program}:& \sustc@underline[8cm]{\sustc@enmajor}\\
       \\[-1em]
-		  \textbf{Thesis Advisor}:& \sustc@underline[7cm]{\sustc@enadvisor}
+		  \textbf{Thesis Advisor}:& \sustc@underline[8cm]{\sustc@enadvisor}
 	  \end{tabular}
     \vskip 2.8cm
       Date: \sustc@ensubmitdate
@@ -515,10 +516,10 @@
 %Other language title page
 \newcommand\make@othertitle{%
   \newgeometry{%
-  top=3.8cm,
-  bottom=3.8cm,
-  left=3.2cm,
-  right=3.2cm
+  top=2.5cm,
+  bottom=2.0cm,
+  left=3.0cm,
+  right=2.5cm
   }
   %\pdfbookmark{英文标题}{etitle}
   \cleardoublepage
@@ -630,7 +631,8 @@
         \fi
       \fi       
     \fi
-    \newgeometry{top=17.4cm,bottom=1.1cm,left=6cm,right=5.5cm}
+    % \newgeometry{top=17.4cm,bottom=1.1cm,left=6cm,right=5.5cm}
+    \newgeometry{top=2.5cm,bottom=2.0cm,left=3.0cm,right=2.5cm}
     \clearpage
     \thispagestyle{empty}
     \rule{0mm}{0mm}\vskip\cover@cnvoffset\hspace{\cover@cnhoffset}
@@ -671,7 +673,8 @@
       \fi       
     \fi
     \c@sen{17pt}{0cm}{0cm}{10cm}
-    \newgeometry{top=2cm,bottom=2cm,left=1.2cm,right=19.5cm}
+    % \newgeometry{top=2cm,bottom=2cm,left=1.2cm,right=19.5cm}
+    \newgeometry{top=2.5cm,bottom=2.0cm,left=3.0cm,right=2.5cm}
     \clearpage
     \thispagestyle{empty}
     \begin{flushleft}
@@ -720,7 +723,7 @@
 \fancypagestyle{plain}{}
 \pagestyle{fancy}
   \fancyhf{}
-  \ifsustc@bachelor\fancyhead[C]{\xiaowuhao{SUSTC's Dissertation for Bachelor's Degree}}\relax\else\fancyhead[C]{\small \nouppercase\leftmark}\fi
+  \ifsustc@bachelor\fancyhead[C]{\xiaowuhao{SUSTech's Dissertation for Bachelor's Degree}}\relax\else\fancyhead[C]{\small \nouppercase\leftmark}\fi
   \renewcommand{\headrulewidth}{0.7pt}
 
 \renewcommand\frontmatter{%
@@ -735,12 +738,12 @@
   \@mainmattertrue
   \pagenumbering{arabic}
   \fancyfoot{}
-  \fancyfoot[RO,LE]{\small \thepage}}
+  \fancyfoot[C]{\small \thepage}}
 
 
 %Abstracts and thanks
-\newcommand{\sustc@enabstractname}{ABSTRACT}
-\newcommand{\sustc@cnabstractname}{摘\rule{\ccwd}{0pt}要}
+\newcommand{\sustc@enabstractname}{[ABSTRACT]}
+\newcommand{\sustc@cnabstractname}{[摘\rule{\ccwd}{0pt}要]}
 
 
 \ifsustc@english
@@ -750,14 +753,14 @@
 \fi
 
 \newcommand\keywords[1]{%
-  \vspace{3.5ex}\noindent{\bfseries 关键词：~} #1}
+  \vspace{3.5ex}\noindent{\bfseries [关键词]：~} #1}
 \newcommand\enkeywords[1]{%
-  \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
+  \vspace{3.5ex}\noindent{\bf [Keywords]:~} #1}
 \newenvironment{cnabstract}
   {\ifsustc@bachelor\chapter{\texorpdfstring{\sustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\sustc@cnabstractname}{摘要}]{\protect\vskip-10pt\sustc@cnabstractname}\fi}
   {}
 \newenvironment{enabstract}
-  {\ifsustc@bachelor\chapter{ABSTRACT}\else\chapter[ABSTRACT]{\protect\vskip-10pt{}ABSTRACT}\fi}
+  {\ifsustc@bachelor\chapter{\texorpdfstring{\sustc@enabstractname}{ABSTRACT}}\else\chapter[\texorpdfstring{\sustc@enabstractname}{ABSTRACT}]{\protect\vskip-10pt\sustc@cnabstractname}\fi}
   {}
 \renewenvironment{thanks}
   {\ifsustc@bachelor\chapter[\texorpdfstring{\sustc@thanksname}{\ifsustc@english{}Acknowledgements\else{}致谢\fi}]{\protect\vskip-10pt\sustc@thanksname}\else\chapter{\texorpdfstring{\sustc@thanksname}{\ifsustc@english{}Acknowledgements\else{}致谢\fi}}\fi}
